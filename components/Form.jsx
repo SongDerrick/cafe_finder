@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Map from './Map'
 
 const Form = ({
   type,
@@ -18,7 +19,7 @@ const Form = ({
       </p>
 
       <div className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'>
-
+        <Map />
       </div>
 
       <form
