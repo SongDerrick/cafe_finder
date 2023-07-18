@@ -3,8 +3,8 @@ import '@styles/globals.css';
 import Nav from '@components/Nav'
 import Provider from '@components/Provider'
 export const metadata = {
-    title: "Promptopia",
-    description: "Discover and Share AI Prompts"
+    title: "카페 탐색기",
+    description: "Discover and Share Cafes"
 }
 
 // this layout will wrap every routes in this project

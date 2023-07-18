@@ -25,12 +25,12 @@ const Nav = () => {
   return (
     <nav className='flex-between w-full mb-16 pt-3'> 
         <Link href="/" className='flex gap-2 flex-center'>
-            <Image src="/assets/images/logo.svg" alt="Promptopia Logo"
-                width={30}
-                height={30}
+            <Image src="/assets/images/logo.png" alt="Promptopia Logo"
+                width={40}
+                height={40}
                 className='object-contain'
             />
-            <p className='logo_text'>Promptopia</p>
+            <p className='logo_text'>카페를 찾아보아요 ㄹㅇ로다가</p>
         </Link>
         
         {/* Desktop Navigation */}
@@ -38,10 +38,10 @@ const Nav = () => {
             {session?.user ? (
                 <div className='flex gap-3 mid:gap-5'>
                     <Link href="/create-prompt" className='black_btn'>
-                        Create Post
+                        새로운 후기 작성
                     </Link>
                     <button type='button' onClick={signOut} className='outline_btn'>
-                        Sign Out
+                        로그아웃
                     </button>
                     <Link href="/profile">
                         <Image 
@@ -62,7 +62,7 @@ const Nav = () => {
                             onClick={()=>signIn(provider.id)}
                             className='black_btn'
                         >
-                            Sign In
+                            로그인
                         </button>
                     ))}
                 </>
@@ -89,14 +89,14 @@ const Nav = () => {
                                 className='dropdown_link'
                                 onClick={()=> setToggleDropdown(false)}
                             >
-                                My Profile
+                                마이 페이지
                             </Link>
                             <Link
                                 href="/create-prompt"    
                                 className='dropdown_link'
                                 onClick={()=> setToggleDropdown(false)}
                             >
-                                Create Prompt
+                                새로운 후기 작성
                             </Link>
                             <button
                                 type='button'
@@ -106,7 +106,7 @@ const Nav = () => {
                                 }}
                                 className='mt-5 w-full black_btn'
                             >
-                                Sign Out
+                                로그아웃
                             </button>
 
                         </div>
@@ -121,7 +121,7 @@ const Nav = () => {
                             onClick={()=>signIn(provider.id)}
                             className='black_btn'
                         >
-                            Sign In
+                            로그인
                         </button>
                     ))}
                 </>

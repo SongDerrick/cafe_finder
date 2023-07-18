@@ -11,11 +11,15 @@ const Form = ({
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text text-left'>
-        <span className='blue_gradient'>{type} Post</span>
+        <span className='blue_gradient'>{type}</span>
       </h1>
       <p className='desc text-left max-w-md'>
-        {type} and share amazing prompts with the world, and let your imagination run wild with any AI-powered platform.
+        방문한 카페에 대해 후기를 남겨주시고, <br /> 그 카페를 설명하기 적합한 태그 세 가지를 골라서 작성해주세요!
       </p>
+
+      <div className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'>
+
+      </div>
 
       <form
         onSubmit={handleSubmit}
@@ -23,12 +27,12 @@ const Form = ({
       >
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Your AI Prompt
+            후기
           </span>
           <textarea 
             value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value})}
-            placeholder='Write your prompt here'
+            placeholder='후기를 이곳에 작성해주세요'
             required
             className='form_textarea'
           />
@@ -36,9 +40,9 @@ const Form = ({
         </label>
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Tag {` `}
+            태그 {` `}
             <span className='font-normal'>
-              (#product, #webdevelopment, #idea)
+              (#분위기좋은, #커피가맛있는, #디저트가맛있는, #조용한)
             </span>
           </span>
           <input 
@@ -61,7 +65,7 @@ const Form = ({
             disabled={submitting}
             className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
           >
-            {submitting ? `${type}...` : type}
+            {submitting ? `저장 중...` : '저장하기'}
           </button>
         </div>
 

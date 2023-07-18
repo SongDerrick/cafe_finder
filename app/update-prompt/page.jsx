@@ -58,7 +58,7 @@ const EditPrompt = () => {
     }
   return (
     <Form
-        type="Edit"
+        type="기존 후기 수정하기"
         post={post}
         setPost={setPost}
         submitting={submitting}

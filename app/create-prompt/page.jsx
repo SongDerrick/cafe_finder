@@ -42,7 +42,7 @@ const CreatePrompt = () => {
     }
   return (
     <Form
-        type="Create"
+        type="새 후기 작성하기"
         post={post}
         setPost={setPost}
         submitting={submitting}
