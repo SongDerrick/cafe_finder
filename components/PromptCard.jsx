@@ -22,8 +22,21 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
 
   return (
     <div className='prompt_card'>
-      <div className='flex flex-col'>
+      <div className='mb-5 flex justify-between items-start gap-5'>
+        <div className='flex flex-col'>
+            <h3 className='font-satoshi font-semibold text-gray-900'>
+              카페 이름 {post.cafe_name}
+            </h3>
+            <p className='font-inter text-xs text-gray-500'>
+              description {post.cafe_locatio}
+            </p>
+        </div>
+
+        <div className='px-4 py-1.5 font-inter text-xs bg-amber-500 rounded-full text-white'>
+          {post.location.distance.toFixed(1)}km
+        </div>
       </div>
+
       <div className='flex justify-between items-start gap-5'>
         <div className='flex-1 flex justify-start items-center gap-3 cursor-pointer'>
           <Image 

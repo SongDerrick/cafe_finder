@@ -5,6 +5,12 @@ const PromptSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+  cafe_name:{
+    type: String,
+  },
+  cafe_location:{
+    type: String,
+  },
   location:{
     type: String,
   },
