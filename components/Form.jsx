@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Map from './Map'
+import Kakao from './Kakao'
 
 const Form = ({
   type,
@@ -19,7 +20,10 @@ const Form = ({
       </p>
 
       <div className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'>
-        <Map />
+        <span className='font-satoshi font-semibold text-base text-gray-700'>
+          카페 고르기
+        </span>
+        <Kakao />
       </div>
 
       <form

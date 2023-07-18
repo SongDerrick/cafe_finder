@@ -48,8 +48,8 @@ const MyProfile = () => {
     }
     return (
         <Profile 
-            name="My"
-            desc="Welcome to your personalized profile page"
+            name='마이 페이지'
+            desc="지금까지 내가 남긴 리뷰"
             data={posts}
             handleEdit={handleEdit}
             handleDelete={handleDelete}

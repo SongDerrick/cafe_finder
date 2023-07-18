@@ -21,8 +21,9 @@ const Feed = () => {
 
   const [searchText, setSearchText] = useState('')
   const [posts, setPosts] = useState([])
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const handleSearchChange = (e) => {
-
+    setSearchText(e.target.value)
   }
 
   useEffect(() => {
@@ -35,12 +36,24 @@ const Feed = () => {
 
     fetchPosts();
   }, []);
+
+  useEffect(() => {
+    if (searchText.trim() === '') {
+      setFilteredPosts(posts);
+    } else {
+      const filteredData = posts.filter((post) =>
+        post.tag.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredPosts(filteredData);
+    }
+  }, [searchText, posts]);
+
   return (
     <section className='feed'>
       <form className='relative w-full flex-center'>
         <input 
           type='text'
-          placeholder='Search for a tag or a username'
+          placeholder='카페를 #태그로 검색해보세요'
           value={searchText}
           onChange = {handleSearchChange}
           required
@@ -51,7 +64,7 @@ const Feed = () => {
 
       </form>
       <PromptCardList 
-          data = {posts}
+          data = {filteredPosts}
           handleTagClick={() => {}}
 
         />

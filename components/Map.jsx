@@ -4,12 +4,30 @@ import {
   GoogleMap,
   Marker,
   Circle,
+  StandaloneSearchBox,
 } from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from 'use-places-autocomplete';
 import styles from '../styles/globals.css';
+
+
+const inputStyle = {
+    boxSizing: `border-box`,
+    border: `1px solid transparent`,
+    width: `240px`,
+    height: `32px`,
+    padding: `0 12px`,
+    borderRadius: `3px`,
+    boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+    fontSize: `14px`,
+    outline: `none`,
+    textOverflow: `ellipses`,
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+}
 
 const Map = () => {
   const [lat, setLat] = useState(27.672932021393862);
@@ -51,11 +69,12 @@ const Map = () => {
         }} />
       </div>
       <GoogleMap
+      
         options={mapOptions}
         zoom={14}
         center={mapCenter}
         mapTypeId={google.maps.MapTypeId.ROADMAP}
-        mapContainerStyle={{ width: '200px', height: '200px' }}
+        mapContainerStyle={{ width: '400px', height: '400px' }}
         onLoad={(map) => console.log('Map Loaded')}
       >
         <Marker position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
@@ -75,6 +94,13 @@ const Map = () => {
             />
           );
         })}
+        <StandaloneSearchBox>
+            <input
+              type='text'
+              style={inputStyle}
+              placeholder='Customized your placeholder'
+            />
+          </StandaloneSearchBox>
       </GoogleMap>
     </div>
   );
