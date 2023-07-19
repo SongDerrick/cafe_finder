@@ -48,7 +48,7 @@ const Form = ({
         </label>
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            location
+            거리
           </span>
           <input 
             value={post.location}
