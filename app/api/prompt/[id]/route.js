@@ -22,7 +22,7 @@ export const GET = async (request, { params }) => {
 
 // PATCH (update)
 export const PATCH = async (request, {params}) => {
-    const { prompt, tag } = await request.json();
+    const { prompt, tag, cafe_name, cafe_location, location } = await request.json();
 
     try {
         await connectToDB();
@@ -33,6 +33,9 @@ export const PATCH = async (request, {params}) => {
 
         existingPrompt.prompt = prompt
         existingPrompt.tag = tag
+        existingPrompt.cafe_name = cafe_name
+        existingPrompt.cafe_location = cafe_location
+        existingPrompt.location = location
 
         await existingPrompt.save();
 

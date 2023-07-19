@@ -4,11 +4,9 @@ import Link from 'next/link'
 const Form = ({
   type,
   post,
-  cafe,
   setPost,
   submitting,
-  handleSubmit,
-  handleSearch
+  handleSubmit
 }) => {
   return (
     <section className='w-full max-w-full flex-start flex-col'>
@@ -26,26 +24,39 @@ const Form = ({
       >
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
-            카페 고르기
+            카페 이름
           </span>
           <input 
             value={post.cafe_name}
-            // onChange={(event) => setPost({ ...post, cafe_name: event.target.value })}
-            placeholder='카페를 검색하세요'
+            onChange={(event) => setPost({ ...post, cafe_name: event.target.value })}
+            placeholder='방문한 카페 이름을 작성해주세요'
             required
             className='form_input'
           />
-
-          <div className='flex-end mx-3 mt-5 gap-4'>
-
-            <button
-                type='button'
-                onClick={handleSearch}
-                className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
-            >
-                검색하기
-            </button>
-          </div>
+        </label>
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            카페 위치
+          </span>
+          <input 
+            value={post.cafe_location}
+            onChange={(event) => setPost({ ...post, cafe_location: event.target.value })}
+            placeholder='방문한 카페 위치를 작성해주세요'
+            required
+            className='form_input'
+          />
+        </label>
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            location
+          </span>
+          <input 
+            value={post.location}
+            onChange={(event) => setPost({ ...post, location: event.target.value })}
+            placeholder='방문한 카페 위치를 작성해주세요'
+            required
+            className='form_input'
+          />
         </label>
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>

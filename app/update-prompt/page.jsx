@@ -15,6 +15,9 @@ const EditPrompt = () => {
     const [post, setPost] = useState({
         prompt: '',
         tag: '',
+        cafe_name:'',
+        cafe_location:'',
+        location:''
     });
 
     useEffect(() => {
@@ -25,6 +28,9 @@ const EditPrompt = () => {
             setPost({
                 prompt: data.prompt,
                 tag: data.tag,
+                cafe_name: data.cafe_name,
+                cafe_location: data.cafe_location,
+                location: data.location
             })
         }
 
@@ -42,7 +48,10 @@ const EditPrompt = () => {
                 method: 'PATCH',
                 body: JSON.stringify({
                     prompt: post.prompt,
-                    tag: post.tag
+                    tag: post.tag,
+                    cafe_name: post.cafe_name,
+                    cafe_location: post.cafe_location,
+                    location: post.location
                 })
             })
             if(response.ok){

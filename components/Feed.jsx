@@ -58,16 +58,17 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch('/api/prompt');
       const data = await response.json();
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        const postsWithDistance = data.map((post) => {
-          const distance = calculateDistance(latitude, longitude, 37, 128);
-          const updatedLocation = { ...post.location, distance };
-          return { ...post, location: updatedLocation };
-        });
-        console.log(postsWithDistance)
-        setPosts(postsWithDistance);
-      });
+      // navigator.geolocation.getCurrentPosition((position) => {
+      //   const { latitude, longitude } = position.coords;
+      //   const postsWithDistance = data.map((post) => {
+      //     const distance = calculateDistance(latitude, longitude, 37, 128);
+      //     const updatedLocation = { ...post.location, distance };
+      //     return { ...post, location: updatedLocation };
+      //   });
+      //   console.log(postsWithDistance)
+      //   setPosts(postsWithDistance);
+      // });
+      setPosts(data)
     };
   
     fetchPosts();
