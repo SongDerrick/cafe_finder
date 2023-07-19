@@ -46,128 +46,61 @@ please vist my blog haha 😄 -> [도윤송의 블로그](https://doyoonsong.ver
 
 - [Project Description](#project-description)
 - [Features](#features)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgments)
   
 ## Project Description
 
-지금 책잼은 독서를 새로운 차원으로 끌어올릴 수 있는 독서 플랫폼입니다. 책을 사랑하는 이들을 위해 다양한 기능을 제공하고 있습니다.
-<br>
-먼저, 책모임 홍보 서비스를 통해 독서 모임을 만들고 다른 사람들과 함께 책을 읽을 수 있게 도와드립니다. 
-<br>
-이를 통해 독서를 좀 더 즐겁고 의미 있는 경험으로 만들 수 있습니다. 
-<br>
-독서 모임에서는 책에 대한 감상을 공유하고, 독서 후기를 작성하여 다른 사람들과 소통할 수 있습니다.
-<br>
-또한, 책에 대한 기록을 남기고 다른 사람들과 공유하는 서비스를 제공합니다. 
-<br>
+Vercel의 서버리스 람다 함수를 이용하여 배포한 Next.js 기반 CRUD 소셜 웹 애플리케이션입니다. <br/>
+카페를 다녀온 후에 후기를 남길 수 있는데, 어디 카페에 갔는지, 간단한 후기, 그리고 카페를 잘 나타내는 태그를 기록할 수 있습니다.<br/>
+다른 사람들이 남긴 후기를 볼 수 있고, 자기가 남긴 후기는 삭제 및 수정이 가능합니다.<br/>
 
-내가 읽은 책들과 감상평을 기록하여 독서 경험을 기록으로 남길 수 있습니다. 
-<br>
-이를 통해 자신의 독서 성취를 확인하고, 다른 사람들과 읽은 책에 대한 이야기를 나눌 수 있습니다.
-<br>
-<br>
-뿐만 아니라, 지금 어떤 책들을 읽고 있는지 알 수 있는 서비스도 제공합니다. 
-<br>
-다른 사람들의 독서 현황을 확인하여 독서 동기부여를 받을 수 있습니다.
-<br>
-또한, 내가 읽은 책들에 대한 추천도 받을 수 있어 새로운 독서 목록을 찾는 데 도움이 됩니다.
-<br>
-지금 책잼은 독서의 재미를 더하고, 독서를 사랑하는 사람들이 함께 소통하고 성장할 수 있는 플랫폼입니다. 
-<br>
-책잼을 통해 독서를 더욱 풍부하고 의미 있는 경험으로 만들어보세요!
 
-### Loading Page             
+### Main Page             
+![sc1](public/assets/images/Screenshot_1.png)
 
-|<img src="images/Screenshot_1.jpg" alt="Sc1" width="270" height="570">|
+메인 페이지 입니다. <br />
+상단 왼쪽의 로고를 클릭하면 메인 페이지로 갈 수 있고, 오른쪽 상단의 로그인 버튼을 클릭하면 Google 계정으로 로그인 할 수 있습니다.<br />
 
-### Tab 1 : ☎️ Contacts
-<img src="images/Screenshot_2.jpg" alt="Sc2" width="270" height="570"> <img src="images/Screenshot_5.jpg" alt="Sc5" width="270" height="570"> <img src="images/Tab1.gif" alt="Sc4" width="270" height="570">
+이 때 세션을 이용해서 로그인 버튼을 렌더링할지 로그아웃버튼을 렌더링할지 클라이언트 사이드에서 판단하는 로직으로 구현했습니다. <br />
+만약 브라우저 내에 세션 유저 아이디와 내부 DB와의 정보가 일치하지 않거나, 세션 유저 아이디가 애초에 존재하지 않는다면 로그인 버튼이 뜹니다 <br/>
 
-First tab is My Contacts.<br>
-By clicking the purple floating button, you can add a new contact.<br>
-By clicking the gray phone button, you can directed to phone call with designated phone number.<br/>
-<br/>
-if we want to put initial data into application, we can modify 
-```
-    private val dataList = mutableListOf(
-        PhoneData("Jang", "010-1234-1234"),
-        PhoneData("Song", "010-1241-1313"),
-        PhoneData("LSLS", "010-1313-1313"),
-        PhoneData("SSSS", "010-4142-4224"),
-        PhoneData("ALSS", "010-1414-1414")
-    )
-```
-in java>ui>phone>Phonefragment.kt
 
-### Tab 2 : 📑 Gallery             
-<img src="images/Screenshot_3.jpg" alt="Sc3" width="270" height="570"> <img src="images/Screenshot_6.jpg" alt="Sc3" width="270" height="570"> <img src="images/Tab2.gif" alt="Sc4" width="270" height="570">
+![sc2](public/assets/images/Screenshot_2.png)
 
-Second tab is My Gallery.<br>
-It has layout of staggered grid layout. Even with different size images, each images are not distorted but rather shown in aspect ratio.<br>
-You also have access to each images by clicking them, you can zoom out and zoom in by multi-touch pinching motion.<br>
-Also, with external storage access granted you can download each images by clicking download button.
+로그인 후 페이지는 다음과 같이 바뀝니다. <br />
+오른쪽 상단에 버튼이 두 개 생기게 되는데, 새로운 후기를 작성하는 버튼과 로그아웃 버튼입니다. <br />
 
-### Tab 3 : 👅 Wise Sayings Generator                   
-<img src="images/Screenshot_4.jpg" alt="Sc4" width="270" height="570"> <img src="images/Tab3.gif" alt="Sc4" width="270" height="570">
+중간 부분에는 우리 서비스에 대한 간략한 설명이 나와있고, 그 아래 input에 태그를 검색하여 태그가 걸린 카페를 따로 찾을 수 있습니다. <br />
+아래 부분에는 피드가 뜨게 되는데, 피드 컴포넌트 내부에 카드 리스트 컴포넌트를 렌더링 했고, <br />
+카드 리스트 컴포넌트 내부에 각각의 정보를 담은 카드를 반복문으로 추가하는 식으로 프론트엔드를 구성했습니다. <br />
 
-Final tab is Wise Sayings Generator.<br>
-Everytime the screen is clicked new wise sayings are generated from APIs from https://api.qwer.pw/.<br>
-However, response from the APIs were in JSON format, and actual sayings and the person who said it were all contained in single string.<br>
-Therefore, we had to parse them to use as adequate output.
+각각의 카드에는 카페의 이름, 카페의 위치, 지금의 나로부터 거리(현재로는 더미 데이터입니다), 이 후기를 남긴 사용자, 후기 내용과 태그가 렌더링됩니다 <br />
+카드 오른편에는 복사 버튼이 있는데, 이 버튼을 누르면 후기 내용이 복사가 되는 구조입니다. 리액트의 스테이트를 사용하여 구현했습니다.
 
+![sc3](public/assets/images/Screenshot_3.png)
+
+새 후기 남기기 버튼을 클릭하면 위와 같은 페이지로 이동합니다. <br />
+이 페이지에 큰 Form 컴포넌트가 있고, 저장하기 버튼을 누르면 submit이 되면서 내부 api에 POST하게 됩니다. <br />
+
+이때 onChange 구문을 이용해서, 스테이트에 저장하여 저장하는 로직으로 구현했습니다. <br />
+그 후에 API 단에서 mongodb에 저장하는 쿼리를 실행하여 DB를 최신화 합니다.
+
+![sc4](public/assets/images/Screenshot_4.png)
+
+오른쪽 상단의 유저 로고를 누르면 마이 페이지로 이동합니다. <br />
+모든 후기를 fetch해오는 내부 API를 이용하여, 후기 데이터를 배열로 받고 그 배열을 반복문으로 Feed 컴포넌트에 마찬가지로 렌더링했습니다. <br />
+이때 데이터 베열을 구하여 지금까지 남긴 리뷰 갯수를 구해여 렌더링했습니다. <br />
+이때 Edit 버튼을 누르면, 기록한 후기를 수정할 수 있는 페이지로 넘어가고 Delete 버튼을 누르면 해당 후기를 삭제하는 내부 API가 호출됩니다. 
+
+![sc5](public/assets/images/Screenshot_5.png)
+
+기존 후기를 수정하는 페이지입니다. <br/>
+이 페이지는 기존 새 후기기 남기기에서 사용한 Form 컴포넌트를 그대로 사용했지만, state를 이용하여 기존의 정보를 인풋창에 미리 띄워놓았다는 차이가 있습니다.
 
 ## Features
 
-<br/>Main Activity<br/>
-We used navgationcontroller to make three tabs in bottom. It is 'Phone, gallery, Wise Saying'
+특징으로는 Next.js 풀스택 웹 애플리케이션이면서 MongoDB를 이용하여 CRUD가 구현되었다는 점입니다. <br />
+아쉬운 점으로는 원래 Google Places API를 이용해서, 카페를 지도에서 찾아 골라서 후기를 남기는 것을 목표로 했었는데,<br />
+시간이 부족해서 그 부분은 구현하지 못했습니다. 그리고 원래 ideation 단계에서는 식당 이후에 카페를 찾는 과정에서 거리순 별점순 취향순으로 카페를 분류한 뒤, <br />
+추천해주는 시스템을 구현하는 것이었는데, 변경하게 된 점이 조금 아쉽습니다.
 
-<br/>Phone<br/>
-We used Relativelayout to put floating action button and recyclerview in one page.
-In recyclerview, we put phonedata having 'name' and 'phoneNum'. 
-<br/>
-<img width="178" alt="image" src="https://github.com/SongDerrick/android_three_tab/assets/55375379/6c95836d-4c93-4cc5-b37f-99c82024cb43">
-<br/>
-one item of recyclerview is like this.
-
-and if We push FAB(Floating Action Button), the bottom sheet appears to add contact.
-<br/>
-<img width="177" alt="image" src="https://github.com/SongDerrick/android_three_tab/assets/55375379/59ea947d-9f46-4fa2-87c3-2eae30d3fcad"><br/>
-This is a capture of bottom sheet. <br/>
-We can click 'ic_phone' to change our phone into calling page.
-
-<br/>Gallery<br/>
-
-in fragment_home.xml, we made recyclerview to show our gallery. and in activity_detailed.xml, we made detailed image view.
-We used StaggeredGridLayoutManager to make grid resized depending on component image's size.<br/>
-<img width="181" alt="image" src="https://github.com/SongDerrick/molcamp_week_1/assets/55375379/bfba0a94-e11b-432e-802c-12662aa9d9c9"><br/>
-this is the detailed image view of our application.
-
-
-<br/>Wise Saying<br/>
-
-in fragment_notifications.xml we made Relativelayout that has progressbar and two textviews.we used api from https://api.qwer.pw/
-we parsed wise saying with dashbar, dividing the wise saying and the person who made it.
   
-## Installation
-
-Nothing Special.<br/>
-Clone and Build project in Android Studio.
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
-<br/>
-1.Fork the Project<br/>
-2.Create your Feature Branch (```git checkout -b feature/AmazingFeature```)<br/>
-3.Commit your Changes (```git commit -m 'Add some AmazingFeature'```)<br/>
-4.Push to the Branch (```git push origin feature/AmazingFeature```)<br/>
-5.Open a Pull Request<br/>
-
-## Acknowledgments
-
-<https://api.qwer.pw/> <br/>
-<https://developer.android.com/docs?hl=ko> <br/>
